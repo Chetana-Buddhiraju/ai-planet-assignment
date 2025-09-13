@@ -1,0 +1,81 @@
+
+## Installation
+
+1. **Clone or download the project**
+2. **Install dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Set up API keys**:
+   - Copy `.env.example` to `.env`
+   - Add your API keys to the `.env` file:
+     ```env
+     OPENAI_API_KEY=your_openai_api_key_here
+     SERPAPI_API_KEY=your_serpapi_api_key_here
+     GITHUB_TOKEN=your_github_token_here
+     HF_TOKEN=your_huggingface_token_here
+     ```
+
+4. **Set up Kaggle (optional)**:
+   - Download your `kaggle.json` file from Kaggle
+   - Place it in `~/.kaggle/kaggle.json` (Linux/Mac) or `%USERPROFILE%\.kaggle\kaggle.json` (Windows)
+
+## Usage
+
+### Running the Streamlit App
+
+```bash
+streamlit run app.py
+```
+
+The app will open in your browser at `http://localhost:8501`
+
+### Using the Python API
+
+```python
+from orchestrator import run_analysis
+
+# Run analysis for a company
+results = run_analysis("Tesla")
+
+# Run analysis for an industry
+results = run_analysis("Healthcare")
+```
+
+##  Configuration
+
+All configuration is handled through the `config.py` file and `.env` file. You can modify:
+
+- API keys and tokens
+- Search result limits
+- Request timeouts
+- Output directory
+- And more...
+
+## Output
+
+The system generates:
+
+1. **Prioritized use cases** with scores
+2. **Markdown reports** saved to the `outputs/` directory
+3. **Relevant resources** from Kaggle, Hugging Face, and GitHub
+4. **Interactive Streamlit interface** for easy exploration
+
+##  Support
+
+If you encounter any issues:
+
+1. Check that all API keys are correctly set
+2. Ensure all dependencies are installed
+3. Check the console output for error messages
+4. Verify your internet connection for web scraping
+
+## Future Enhancements
+
+- [ ] Add more data sources
+- [ ] Implement caching for faster repeated searches
+- [ ] Add export options (PDF, Excel)
+- [ ] Implement user authentication
+- [ ] Add use case templates
+- [ ] Integrate with more AI models
